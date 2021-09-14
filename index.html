@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="https://fonts.google.com/specimen/Josefin+Sans">
+  
+  <title>Todo app</title>
+
+</head>
+<body>
+  <main>  
+    <div class="backdrop"></div>
+
+    <header class="header_img-container">
+      <img class="header-img" src="assets/images/bg-mobile-light.jpg" alt="" style="width: 100%;">
+    </header> 
+
+    <div class="container">
+      <div class="container-todo">
+        <div class="title-container">
+          <h1 class="main-title">Todo</h1>
+          <img class="icon-moon" src="assets/images/icon-moon.svg" alt="icon-moon">
+        </div>
+        <div class="add-item">
+          <input class="add_item-input" id="add_item-input" type="text" placeholder="Create a new todo...">
+          <button class="add_item-btn btn" id="add_item-btn">Add todo</button>
+        </div>
+        <div class="todo">
+          <ul class="todo_list">
+
+       <li class="todo_list-item">
+        <div class="todo-item">
+          <img class="icon-check" src="assets/images/icon-check.svg" alt="Icon check">
+          <span class="item-content">${item}</span>
+      </div>
+      <img class="remove-item" src="assets/images/icon-cross.svg" alt="Icone cross">
+       </li>
+          </ul>
+          <h2 class="entry-text">Nothing added yet</h2>
+          <div class="number-items">
+            <span> <small class="number_item-left">0</small> items left</span>
+            <span class="btn_clear-completed"> Clear Completed</span>
+          </div>
+        </div>
+        <div class="filter">
+          <span class="filter-item active">All</span>
+          <span class="filter-item">Active</span>
+          <span class="filter-item">Completed</span>
+        </div>
+        <small class="drag-text"> Drag and drop to reorder list</small>
+      </div>
+
+      <div class="container_modal">
+        <p class="entry-text container_modal-paragraph">Are you sure you want to delete this item</p>
+        <div>
+          <button class="modal_btn-no btn">No</button>
+          <button class="modal_btn-yes">Yes</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
