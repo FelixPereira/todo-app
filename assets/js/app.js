@@ -1,90 +1,44 @@
-let addItemInput = document.getElementById("add_item-input");
-let addItemBtn = document.getElementById("add_item-btn");
-let todoItems = document.querySelector(".todo_list");
-let iconsCheck = document.querySelectorAll(".icon-check");
-let itemContent = document.querySelector(".item-content");
-let entryText = document.querySelector(".entry-text");
-let itemsLeft = document.querySelector(".number_item-left");
-let removeItemBtn = document.querySelector(".remove-item");
-let modal = document.querySelector(".container_modal");
-let closeModalBtn = document.querySelector(".modal_btn-no");
-let backdrop = document.querySelector(".backdrop");
-let clearCompletedBtn = document.querySelector(".btn_clear-completed");
-let allItems = [];
+'use strict';
 
-iconsCheck.forEach(iconCheck => {
-    iconCheck.addEventListener("click", () => console.log("OLá"));
-});
+const addItemInput = document.getElementById("add_item-input");
+const addItemBtn = document.getElementById("add_item-btn");
+const todoList = document.querySelector(".todo_list");
+const iconsCheck = document.querySelector(".icon-check");
+const itemContent = document.querySelector(".item-content");
+const entryText = document.querySelector(".entry-text");
+const itemsLeft = document.querySelector(".number_item-left");
+const removeItemBtn = document.querySelector(".remove-item");
+const modal = document.querySelector(".container_modal");
+const closeModalBtn = document.querySelector(".modal_btn-no");
+const backdrop = document.querySelector(".backdrop");
+const clearCompconstedBtn = document.querySelector(".btn_clear-compconsted");
+const allItems = [];
 
 
-let showModal = () => {
-    backdrop.style.display = "block";
-    modal.style.display = "block";
-}
+function addNewTask() {
+  const userTask = addItemInput.value;
+  const newTask = {
+    itemContent: userTask,
+    itemId: Math.trunc(Math.random() * 200)
+  };
 
-let hideBackdrop = () =>{
-    backdrop.style.display = "none";
-    modal.style.display = "none";
-}
-
-let removeItem = () =>{
-    todoItems.removeChild(todoItems.children[0]);
-}
-
-let hideEntryText = () =>{
-    if(allItems.length > 0){
-        entryText.style.display = "none";
-    } else{
-        entryText.style.display = "block";
-    }
-}
-
-let checkItem = () =>{
-    iconCheck.classList.toggle("icon-checked");
-    itemContent.classList.toggle("item-checked");
-}
-
-let createItem = (id, item) =>{
-    let newItem = document.createElement("li");
-    newItem.classList.add("todo_list-item")
-    newItem.innerHTML = 
-        `
+  addItemInput.value = ' ';
+  allItems.push(newTask);
+  allItems.forEach(task => {
+    const newTaskHTML = `
+      <li class="todo_list-item">
         <div class="todo-item">
-            <img class="icon-check" src="assets/images/icon-check.svg" alt="Icon check">
-            <span class="item-content">${item}</span>
+          <img class="icon-check" src="assets/images/icon-check.svg" alt="Icon check">
+          <span class="item-content">${task.itemContent}</span>
         </div>
         <img class="remove-item" src="assets/images/icon-cross.svg" alt="Icone cross">
-        `;
+      </li>
+    `;
+    todoList.insertAdjacentHTML('afterbegin', newTaskHTML)
 
-        //todoItems.insertAdjacentElement("afterbegin", newItem);
+  })
 
-        todoItems.appendChild(newItem);
-    }
-
-let addItem = () =>{
-    inputValue = addItemInput.value;
-    if(inputValue == undefined || inputValue == ""){
-        alert("Insira uma actividade válida!");
-    } else{
-        let itemId = Math.random();
-        let itemState = "active";
-        let newItem ={Item_id: itemId, Item_content: inputValue, Item_state: itemState};
-
-        createItem(newItem.Item_id, newItem.Item_content);
-        allItems.push(newItem);
-    }
-
-    addItemInput.value = ""; 
-    itemsLeft.innerHTML = allItems.length;
-    hideEntryText(); 
-
-    console.log(allItems);
+  console.log(allItems);
 }
 
-
-addItemBtn.addEventListener("click", addItem);
-//iconCheck.addEventListener("click", checkItem);
-removeItemBtn.addEventListener("click", showModal);
-closeModalBtn.addEventListener("click", hideBackdrop);
-backdrop.addEventListener("click", hideBackdrop);
-clearCompletedBtn.addEventListener("click", showModal);
+addItemBtn.addEventListener('click', addNewTask)

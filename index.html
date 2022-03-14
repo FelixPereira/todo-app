@@ -12,13 +12,12 @@
 
 </head>
 <body>
+  <div class="backdrop"></div>
+
+  <header class="header_img-container">
+    <img class="header-img" src="assets/images/bg-mobile-light.jpg" alt="" style="width: 100%;">
+  </header> 
   <main>  
-    <div class="backdrop"></div>
-
-    <header class="header_img-container">
-      <img class="header-img" src="assets/images/bg-mobile-light.jpg" alt="" style="width: 100%;">
-    </header> 
-
     <div class="container">
       <div class="container-todo">
         <div class="title-container">
@@ -31,14 +30,13 @@
         </div>
         <div class="todo">
           <ul class="todo_list">
-
-       <li class="todo_list-item">
-        <div class="todo-item">
-          <img class="icon-check" src="assets/images/icon-check.svg" alt="Icon check">
-          <span class="item-content">${item}</span>
-      </div>
-      <img class="remove-item" src="assets/images/icon-cross.svg" alt="Icone cross">
-       </li>
+            <li class="todo_list-item">
+              <div class="todo-item">
+                <img class="icon-check" src="assets/images/icon-check.svg" alt="Icon check">
+                <span class="item-content">Item 1</span>
+              </div>
+              <img class="remove-item" src="assets/images/icon-cross.svg" alt="Icone cross">
+            </li>
           </ul>
           <h2 class="entry-text">Nothing added yet</h2>
           <div class="number-items">
@@ -55,7 +53,7 @@
       </div>
 
       <div class="container_modal">
-        <p class="entry-text container_modal-paragraph">Are you sure you want to delete this item</p>
+        <p class="entry-text container_modal-paragraph">Are you sure you want to delete this item?</p>
         <div>
           <button class="modal_btn-no btn">No</button>
           <button class="modal_btn-yes">Yes</button>
@@ -67,3 +65,4 @@
   <script src="assets/js/app.js" defer></script>
 </body>
 </html>
+
