@@ -248,7 +248,7 @@ body{
     transition: .5s;
 }
 
-.filter-item.active{
+.active{
     color: hsl(220, 98%, 61%);
 }
 
