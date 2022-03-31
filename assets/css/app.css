@@ -249,7 +249,7 @@ body{
 }
 
 .active{
-    color: hsl(220, 98%, 61%);
+  color: hsl(220, 98%, 61%) !important;
 }
 
 .drag-text{

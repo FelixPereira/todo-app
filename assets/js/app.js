@@ -11,7 +11,7 @@ const removeItemBtn = document.querySelector(".remove-item");
 const modal = document.querySelector(".container_modal");
 const closeModalBtn = document.querySelector(".modal_btn-no");
 const backdrop = document.querySelector(".backdrop");
-const clearCompconstedBtn = document.querySelector(".btn_clear-compconsted");
+const btnClearCompleted = document.querySelector(".btn_clear-completed");
 const showActiveTask = document.querySelector('.show-active');
 const showCompletedTask = document.querySelector('.show-completed');
 const showAllTask = document.querySelector('.show-all');
@@ -23,8 +23,6 @@ const allTasks = [
   {id: 4, task: 'Eat', status: 'completed'}
 ];
 
-// NUMBER OF REMAINING TASKS
-itemsLeft.textContent = allTasks.length;
 
 function displayTasks(tasks) {
   tasks.forEach(task => {
@@ -46,6 +44,9 @@ function displayTasks(tasks) {
 function updateUI(tasks) {
   // CLEAR EXISTING ITEMS
   todoList.innerHTML = '';
+  
+  // NUMBER OF REMAINING TASKS
+  itemsLeft.textContent = allTasks.length;
 
   addItemInput.value = '';
   if(tasks.length > 0) {
@@ -76,7 +77,8 @@ function showActive() {
   const tasks = allTasks
     .slice(0)
     .filter(task => task.status === 'active');
-    
+  
+
   showActiveTask.classList.add('active');
   showCompletedTask.classList.remove('active');
   showAllTask.classList.remove('active');
@@ -104,9 +106,18 @@ function showAll() {
   updateUI(allTasks);
 };
 
+function clearcompletedTask() {
+    for(const i = 0; i < allTasks.length; i++) {
+      allTasks.forEach((task, idx) => {
+        return task.status === 'completed' ? allTasks.splice(idx, 1) : allTasks;
+    });
+      updateUI(allTasks);
+  };
+};
 
 //  EVENT LISoTENERS
 addItemBtn.addEventListener('click', addNewTask);
 showActiveTask.addEventListener('click', showActive);
 showCompletedTask.addEventListener('click', showCompleted);
 showAllTask.addEventListener('click', showAll);
+btnClearCompleted.addEventListener('click', clearcompletedTask)
